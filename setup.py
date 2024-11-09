@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
+from Cython.Build import cythonize
 import exifread
 
 readme_file = open("README.rst", "rt").read()
 
 dev_requirements = [
     "mypy==1.2.0",
-    "pylint==2.14.4",
+    "pylint==2.14.4"
 ]
 
 setup(
@@ -20,6 +21,7 @@ setup(
     keywords="exif image metadata photo",
     description=" ".join(exifread.__doc__.splitlines()).strip(),
     long_description=readme_file,
+    ext_modules=cythonize("exifread/*.pyx"),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
@@ -34,6 +36,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Utilities",
     ],
     extras_require={
